@@ -11,6 +11,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String description;
     @ManyToMany
     @JoinTable(name = "task_client",
     joinColumns = @JoinColumn(name = "task_id"),
@@ -26,6 +27,11 @@ public class Task {
     private Car car;
     private LocalDateTime created;
     private LocalDateTime updated;
+    @ManyToMany
+    @JoinTable(name = "task_status",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "statuses_id"))
+    private List<TaskStatus> statuses;
 
     public Long getId() {
         return id;
@@ -73,6 +79,22 @@ public class Task {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<TaskStatus> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(List<TaskStatus> statuses) {
+        this.statuses = statuses;
     }
 
     @Override

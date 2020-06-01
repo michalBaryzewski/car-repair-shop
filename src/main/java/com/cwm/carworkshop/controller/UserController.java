@@ -19,22 +19,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/admin")
-    @ResponseBody
-    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
-        return "Hello " + entityUser.getUsername();
-    }
+//    @GetMapping("/admin")
+//    @ResponseBody
+//    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
+//        User entityUser = customUser.getUser();
+//        return "Hello " + entityUser.getUsername();
+//    }
 
-    @GetMapping("/create-user")
-    @ResponseBody
-    public String createUser() {
-        User user = new User();
-        user.setUsername("admin1");
-        user.setPassword("admin123");
-        userService.saveUser(user);
-        return "utworzono admina";
-    }
+//    @GetMapping("/create-user")
+//    @ResponseBody
+//    public String createUser() {
+//        User user = new User();
+//        user.setUsername("admin1");
+//        user.setPassword("admin123");
+//        userService.saveUser(user);
+//        return "utworzono admina";
+//    }
 
 
 }

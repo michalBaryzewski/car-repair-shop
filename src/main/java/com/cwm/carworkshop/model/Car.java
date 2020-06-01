@@ -20,6 +20,9 @@ public class Car {
     private String fuelType;
     private String gearboxType;
     private String mileage;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
+    private User owner;
 
     public Long getId() {
         return id;
@@ -115,6 +118,14 @@ public class Car {
 
     public void setMileage(String mileage) {
         this.mileage = mileage;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     @Override
