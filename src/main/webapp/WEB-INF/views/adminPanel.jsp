@@ -21,6 +21,10 @@
         <td><a href="/admin/create-car">Create Car</a> </td>
         <td><a href="/admin/create-car">Car List</a> </td>
     </tr>
+    <tr>
+        <td><a href="/admin/create-task">Create Task</a> </td>
+        <td><a href="/admin/create-task">Task List</a> </td>
+    </tr>
     </tbody>
 </table>
 </body>

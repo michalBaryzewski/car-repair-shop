@@ -87,8 +87,8 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", enabled=" + enabled +
-                ", roles=" + roles +
+//                ", enabled=" + enabled +
+//                ", roles=" + roles +
                 '}';
     }
 }

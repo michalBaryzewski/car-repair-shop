@@ -19,20 +19,22 @@
             <td><b>Description:</b></td><td><form:input path="description" value="${task.description}"/></td>
         </tr>
         <tr>
-            <td><b>Client:</b></td><td><form:select path="clients" itemLabel="username" itemValue="id" items="${users}"/></td>
+            <td><b>Client:</b></td><td><form:select path="clients" itemLabel="username" itemValue="id" items="${clients}"/></td>
         </tr>
         <tr>
-            <td><b>Employee: </b></td><td><form:input path="employees" value="${task.employees}"/></td>
+            <td><b>Employee:</b></td><td><form:select path="employees" itemLabel="username" itemValue="id" items="${employees}"/></td>
         </tr>
         <tr>
-            <td><b>Car:</b></td><td><form:password path="car" value="${task.car}"/></td>
+            <td><b>Car:</b></td><td><form:select path="car" itemLabel="licensePlate" itemValue="id" items="${cars}"/></td>
         </tr>
         <tr>
             <td><b>Status:</b></td><td><form:select path="statuses" itemLabel="status" itemValue="id" items="${statuses}"/></td>
         </tr>
+        <tr>
+            <input type="submit">
+        </tr>
     </form:form>
     <tr>
-        <input type="submit">
     </tr>
     </tbody>
 </table>

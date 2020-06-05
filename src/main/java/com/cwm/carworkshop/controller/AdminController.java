@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -79,8 +79,11 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
-
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        return roleRepository.findByName("ROLE_CLIENT").toString();
+    }
 
 
     @ModelAttribute("roles")
@@ -94,6 +97,28 @@ public class AdminController {
     }
 
     @ModelAttribute("users")
-    private List<User> userList() { return userRepository.findAll(); }
+    private List<User> userList() {
+        return userRepository.findAll();
+    }
 
+    @ModelAttribute("clients")
+    private List<User> clientList() throws Exception {
+        Set<Role> roles = roleRepository.findAllByName("ROLE_CLIENT");
+        return userRepository.findAllByRolesIn(roles);
+    }
+
+    @ModelAttribute("employees")
+    private List<User> employeeList() throws Exception {
+        Set<Role> roles = roleRepository.findAllByName("ROLE_EMPLOYEE");
+        return userRepository.findAllByRolesIn(roles);
+    }
+
+    @ModelAttribute("cars")
+    private List<Car> carList() {
+        return carRepository.findAll();
+    }
 }
+
+
+
+

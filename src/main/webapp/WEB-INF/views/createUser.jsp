@@ -30,10 +30,10 @@
         <tr>
             <td><b>Role:</b></td><td><form:select path="roles" itemLabel="name" itemValue="id" items="${roles}"/></td>
         </tr>
+        <tr>
+            <input type="submit">
+        </tr>
     </form:form>
-    <tr>
-        <input type="submit">
-    </tr>
     </tbody>
 </table>
 </body>

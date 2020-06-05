@@ -51,10 +51,11 @@
         <tr>
             <td><b>Owner:</b></td><td><form:select path="owner" itemLabel="username" itemValue="id" items="${users}"/></td>
         </tr>
+        <tr>
+            <input type="submit">
+        </tr>
     </form:form>
-    <tr>
-        <input type="submit">
-    </tr>
+
     </tbody>
 </table>
 </body>
