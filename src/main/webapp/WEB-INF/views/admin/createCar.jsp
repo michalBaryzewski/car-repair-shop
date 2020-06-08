@@ -19,7 +19,7 @@
             <td><b>Type:</b></td><td><form:input path="type" value="${car.type}"/></td>
         </tr>
         <tr>
-            <td><b>Brand:</b></td><td><form:input path="brand" value="${car.brand}"/></td>
+            <td><b>Brand:</b></td><td><form:select path="brand" items="${carTypes}"/></td>
         </tr>
         <tr>
             <td><b>Model:</b></td><td><form:input path="model" value="${car.model}"/></td>
@@ -31,7 +31,7 @@
             <td><b>Year of production:</b></td><td><form:input path="yearOfProduction" value="${car.yearOfProduction}"/></td>
         </tr>
         <tr>
-            <td><b>Country:</b></td><td><form:input path="countryOfOrigin" value="${car.countryOfOrigin}"/></td>
+            <td><b>Country:</b></td><td><form:select path="countryOfOrigin" items="${countries}"/></td>
         </tr>
         <tr>
             <td><b>Engine:</b></td><td><form:input path="engine" value="${car.engine}"/></td>
@@ -43,7 +43,7 @@
             <td><b>Type of fuel:</b></td><td><form:input path="fuelType" value="${car.fuelType}"/></td>
         </tr>
         <tr>
-            <td><b>Type of gearbox:</b></td><td><form:input path="gearboxType" value="${car.gearboxType}"/></td>
+            <td><b>Type of gearbox:</b></td><td><form:select path="gearboxType" items="${gearboxTypes}"/></td>
         </tr>
         <tr>
             <td><b>Mileage:</b></td><td><form:input path="mileage" value="${car.mileage}"/></td>

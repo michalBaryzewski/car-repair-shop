@@ -1,7 +1,6 @@
 package com.cwm.carworkshop.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -87,8 +86,6 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-//                ", enabled=" + enabled +
-//                ", roles=" + roles +
                 '}';
     }
 }
