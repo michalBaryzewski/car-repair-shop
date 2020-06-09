@@ -1,5 +1,6 @@
 package com.cwm.carworkshop;
 
+import com.cwm.carworkshop.service.CurrentUser;
 import com.cwm.carworkshop.service.SpringDataUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,4 +34,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SpringDataUserDetailsService customUserDetailsService() {
         return new SpringDataUserDetailsService();
     }
+
 }
