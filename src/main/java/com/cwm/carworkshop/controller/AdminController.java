@@ -5,6 +5,7 @@ import com.cwm.carworkshop.repository.*;
 import com.cwm.carworkshop.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class AdminController {
     private final TaskStatusRepository taskStatusRepository;
     private final CarRepository carRepository;
     private final TaskRepository taskRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Value("classpath:static/carBrands.txt")
     private Resource resourceCarBrands;
@@ -29,13 +31,14 @@ public class AdminController {
     @Value("classpath:static/countries.txt")
     private Resource resourceCountries;
 
-    public AdminController(UserRepository userRepository, RoleRepository roleRepository, UserService userService, TaskStatusRepository taskStatusRepository, CarRepository carRepository, TaskRepository taskRepository) {
+    public AdminController(UserRepository userRepository, RoleRepository roleRepository, UserService userService, TaskStatusRepository taskStatusRepository, CarRepository carRepository, TaskRepository taskRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.userService = userService;
         this.taskStatusRepository = taskStatusRepository;
         this.carRepository = carRepository;
         this.taskRepository = taskRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("")
@@ -75,7 +78,7 @@ public class AdminController {
         user1.setFirstName(user.getFirstName());
         user1.setLastName(user.getLastName());
         user1.setUsername(user.getUsername());
-        user1.setPassword(user.getPassword());
+        user1.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user1.setRoles(user.getRoles());
         user1.setEnabled(user.getEnabled());
         userRepository.save(user1);
