@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: michalbaryzewski
@@ -12,18 +13,17 @@
     <title>Task Edit</title>
 </head>
 <body>
+<table border="1">
+    <tbody>
 <form:form method="post" modelAttribute="task">
     <tr>
         <td><b>Description:</b></td><td><form:input path="description" value="${task.description}"/></td>
     </tr>
     <tr>
-        <td><b>Client:</b></td><td><form:select path="clients" items="${clients}" itemLabel="username"/></td>
+        <td><b>Employee:</b></td><td><c:out value="${task.employees}"/></td>
     </tr>
     <tr>
-        <td><b>Employee:</b></td><td><form:select path="employees" items="${employees}" itemLabel="username"/></td>
-    </tr>
-    <tr>
-        <td><b>Car:</b></td><td><form:select path="car" items="${cars}" itemLabel="licensePlate"/></td>
+        <td><b>Car:</b></td><td><c:out value="${task.car}"/></td>
     </tr>
     <tr>
         <td><b>Status:</b></td><td><form:select path="statuses" items="${statuses}" itemLabel="status"/></td>
@@ -32,5 +32,7 @@
         <input type="submit">
     </tr>
 </form:form>
+    </tbody>
+</table>
 </body>
 </html>

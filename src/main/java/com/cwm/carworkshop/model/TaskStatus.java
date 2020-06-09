@@ -29,9 +29,6 @@ public class TaskStatus {
 
     @Override
     public String toString() {
-        return "TaskStatus{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                '}';
+        return "" + status;
     }
 }

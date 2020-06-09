@@ -16,9 +16,9 @@
     <tbody>
     <tr>
         <td><b>Description</b></td>
-        <td><b>Client</b></td>
         <td><b>Employee</b></td>
         <td><b>Car</b></td>
+        <td><b>Status</b></td>
         <td><b>Created</b></td>
         <td><b>Updated</b></td>
     </tr>
@@ -28,13 +28,13 @@
                 <c:out value="${task.description}"/>
             </td>
             <td>
-                <c:out value="${task.clients}"/>
-            </td>
-            <td>
                 <c:out value="${task.employees}"/>
             </td>
             <td>
                 <c:out value="${task.car.licensePlate}"/>
+            </td>
+            <td>
+                <c:out value="${task.statuses}"/>
             </td>
             <td>
                 <c:out value="${task.created}"/>
@@ -42,8 +42,7 @@
             <td>
                 <c:out value="${task.updated}"/>
             </td>
-            <td><a href="/manager/delete-task/${task.id}">Delete</a></td>
-            <td><a href="/manager/update-task/${task.id}">Edit</a> </td>
+            <td><a href="/employee/update-task/${task.id}">Edit</a> </td>
         </tr>
     </c:forEach>
     </tbody>

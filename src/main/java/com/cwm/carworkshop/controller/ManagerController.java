@@ -103,7 +103,7 @@ public class ManagerController {
     public String updateTask(Model model, @PathVariable long id) throws Exception {
         Task task = taskRepository.findById(id).orElseThrow(Exception::new);
         model.addAttribute("task", task);
-        return "manager/taskEdit";
+        return "employee/taskEdit";
     }
 
     @PostMapping("/update-task/{id}")
@@ -124,7 +124,7 @@ public class ManagerController {
     }
 
     @GetMapping("/tasks")
-    public String tasks() { return "manager/taskList"; }
+    public String tasks() { return "employee/taskList"; }
 
     @ModelAttribute("statuses")
     private List<TaskStatus> taskStatusList() {
