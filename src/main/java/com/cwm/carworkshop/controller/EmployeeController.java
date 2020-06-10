@@ -44,7 +44,7 @@ public class EmployeeController {
         return "employee/taskEdit";
     }
 
-    @PostMapping("/update-task/{id}")
+    @PutMapping("/update-task/{id}")
     public String updateTask(@ModelAttribute Task task, @PathVariable long id) throws Exception {
         Task task1 = taskRepository.findById(id).orElseThrow(Exception::new);
         task1.setDescription(task.getDescription());

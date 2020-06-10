@@ -54,7 +54,7 @@ public class ManagerController {
         return "redirect:/manager";
     }
 
-    @GetMapping("/delete-car/{id}")
+    @DeleteMapping("/delete-car/{id}")
     public String deleteCar(@PathVariable long id) throws Exception {
         Car car = carRepository.findById(id).orElseThrow(Exception::new);
         carRepository.delete(car);
@@ -68,7 +68,7 @@ public class ManagerController {
         return "manager/carEdit";
     }
 
-    @PostMapping("/update-car/{id}")
+    @PutMapping("/update-car/{id}")
     public String updateCar(@ModelAttribute Car car, @PathVariable long id) throws Exception {
         Car car1 = carRepository.findById(id).orElseThrow(Exception::new);
         car1.setBrand(car.getBrand());
@@ -106,7 +106,7 @@ public class ManagerController {
         return "employee/taskEdit";
     }
 
-    @PostMapping("/update-task/{id}")
+    @PutMapping("/update-task/{id}")
     public String updateTask(@ModelAttribute Task task, @PathVariable long id) throws Exception {
         Task task1 = taskRepository.findById(id).orElseThrow(Exception::new);
         task1.setDescription(task.getDescription());

@@ -7,6 +7,7 @@ import com.cwm.carworkshop.repository.CarRepository;
 import com.cwm.carworkshop.repository.TaskRepository;
 import com.cwm.carworkshop.repository.UserRepository;
 import com.cwm.carworkshop.service.CurrentUser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -46,19 +46,19 @@ public class AdminController {
         return "admin/adminPanel";
     }
 
-    @RequestMapping(value = "/create-user", method = RequestMethod.GET)
+    @GetMapping("/create-user")
     public String createUser(Model model) {
         model.addAttribute("user", new User());
         return "admin/createUser";
     }
 
-    @RequestMapping(value = "/create-user", method = RequestMethod.POST)
+    @PostMapping("/create-user")
     public String createUser(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/delete-user/{id}", method = RequestMethod.GET)
+    @DeleteMapping("/delete-user/{id}")
     public String deleteUser(@PathVariable long id) throws Exception {
         User user = userRepository.findById(id).orElseThrow(Exception::new);
         userRepository.delete(user);
@@ -72,7 +72,7 @@ public class AdminController {
         return "admin/userEdit";
     }
 
-    @PostMapping("/update-user/{id}")
+    @PutMapping("/update-user/{id}")
     public String updateUser(@ModelAttribute User user, @PathVariable long id) throws Exception {
         User user1 = userRepository.findById(id).orElseThrow(Exception::new);
         user1.setFirstName(user.getFirstName());
@@ -97,7 +97,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/delete-car/{id}")
+    @DeleteMapping("/delete-car/{id}")
     public String deleteCar(@PathVariable long id) throws Exception {
         Car car = carRepository.findById(id).orElseThrow(Exception::new);
         carRepository.delete(car);
@@ -111,7 +111,7 @@ public class AdminController {
         return "admin/carEdit";
     }
 
-    @PostMapping("/update-car/{id}")
+    @PutMapping("/update-car/{id}")
     public String updateCar(@ModelAttribute Car car, @PathVariable long id) throws Exception {
         Car car1 = carRepository.findById(id).orElseThrow(Exception::new);
         car1.setBrand(car.getBrand());
@@ -149,7 +149,7 @@ public class AdminController {
         return "admin/taskEdit";
     }
 
-    @PostMapping("/update-task/{id}")
+    @PutMapping("/update-task/{id}")
     public String updateTask(@ModelAttribute Task task, @PathVariable long id) throws Exception {
         Task task1 = taskRepository.findById(id).orElseThrow(Exception::new);
         task1.setDescription(task.getDescription());

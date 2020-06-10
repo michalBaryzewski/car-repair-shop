@@ -1,15 +1,17 @@
 package com.cwm.carworkshop.controller;
 
 import com.cwm.carworkshop.model.Role;
+import com.cwm.carworkshop.model.TaskStatus;
 import com.cwm.carworkshop.model.User;
 import com.cwm.carworkshop.repository.RoleRepository;
+import com.cwm.carworkshop.repository.TaskStatusRepository;
 import com.cwm.carworkshop.repository.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,10 +20,12 @@ public class HomePageController {
 
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
+    private final TaskStatusRepository taskStatusRepository;
 
-    public HomePageController(RoleRepository roleRepository, UserRepository userRepository) {
+    public HomePageController(RoleRepository roleRepository, UserRepository userRepository, TaskStatusRepository taskStatusRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.taskStatusRepository = taskStatusRepository;
     }
 
     @GetMapping("/about")
