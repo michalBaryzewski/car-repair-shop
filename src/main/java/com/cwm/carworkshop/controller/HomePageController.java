@@ -27,7 +27,6 @@ public class HomePageController {
     @GetMapping("/about")
     @ResponseBody
     public String about() {
-//        Role role = roleRepository.findByName("ROLE_ADMIN");
         Set<Role> roles = roleRepository.findAllByName("ROLE_ADMIN");
         List<User> users = userRepository.findAllByRolesIn(roles);
         return users.toString();
