@@ -1,5 +1,7 @@
 package com.cwm.carworkshop.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,12 +15,15 @@ public class Car {
     private String brand;
     private String model;
     private String licensePlate;
+    @NumberFormat
     private String yearOfProduction;
     private String countryOfOrigin;
     private String engine;
+    @NumberFormat
     private String power;
     private String fuelType;
     private String gearboxType;
+    @NumberFormat
     private String mileage;
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")

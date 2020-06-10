@@ -1,6 +1,10 @@
 package com.cwm.carworkshop.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -13,8 +17,12 @@ public class User {
     private String firstName;
     private String lastName;
     @Column(nullable = false, unique = true, length = 60)
+    @NotNull
     private String username;
+    @NotNull
+    @Size(min = 3)
     private String password;
+    @NumberFormat
     private int enabled;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
