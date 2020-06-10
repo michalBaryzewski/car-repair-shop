@@ -11,6 +11,21 @@
     <title>Client Panel</title>
 </head>
 <body>
-
+<table border="1">
+    <tbody>
+    <tr>
+        <td><a href="/client/tasks">Task List</a> </td>
+    </tr>
+    <tr>
+        <td><a href="/client/cars">Car List</a> </td>
+    </tr>
+    <tr>
+        <td><a href="/client/create-car">Create Car</a> </td>
+    </tr>
+    <tr>
+        <td><a href="/client/create-task">Create Task</a> </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
