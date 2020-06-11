@@ -52,7 +52,7 @@
                 <c:out value="${car.engine}"/>
             </td>
             <td>
-                <c:out value="${car.power}"/>
+                <c:out value="${car.power} HP"/>
             </td>
             <td>
                 <c:out value="${car.fuelType}"/>

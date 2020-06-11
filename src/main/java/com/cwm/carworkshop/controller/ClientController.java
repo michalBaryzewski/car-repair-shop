@@ -2,12 +2,12 @@ package com.cwm.carworkshop.controller;
 
 import com.cwm.carworkshop.model.Car;
 import com.cwm.carworkshop.model.Task;
+import com.cwm.carworkshop.model.TaskStatus;
 import com.cwm.carworkshop.model.User;
 import com.cwm.carworkshop.repository.CarRepository;
 import com.cwm.carworkshop.repository.TaskRepository;
-import com.cwm.carworkshop.repository.UserRepository;
+import com.cwm.carworkshop.repository.TaskStatusRepository;
 import com.cwm.carworkshop.service.CurrentUser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,7 +25,7 @@ public class ClientController {
 
     private final TaskRepository taskRepository;
     private final CarRepository carRepository;
-    private final UserRepository userRepository;
+    private final TaskStatusRepository taskStatusRepository;
 
     @Value("classpath:static/carBrands.txt")
     private Resource resourceCarBrands;
@@ -33,10 +33,10 @@ public class ClientController {
     @Value("classpath:static/countries.txt")
     private Resource resourceCountries;
 
-    public ClientController(TaskRepository taskRepository, CarRepository carRepository, UserRepository userRepository) {
+    public ClientController(TaskRepository taskRepository, CarRepository carRepository, TaskStatusRepository taskStatusRepository) {
         this.taskRepository = taskRepository;
         this.carRepository = carRepository;
-        this.userRepository = userRepository;
+        this.taskStatusRepository = taskStatusRepository;
     }
 
     @GetMapping("")
@@ -95,14 +95,16 @@ public class ClientController {
     public String createTask(Model model) {
         Task task = new Task();
         model.addAttribute("task", task);
-        return "createTask";
+        return "client/createTask";
     }
 
     @PostMapping("/create-task")
-    public String createTask(@ModelAttribute Task task, @AuthenticationPrincipal CurrentUser currentUser) {
+    public String createTask(@ModelAttribute Task task, @AuthenticationPrincipal CurrentUser currentUser) throws Exception {
         task.setCreated(LocalDateTime.now());
         List<User> client = Collections.singletonList(currentUser.getUser());
         task.setClients(client);
+        List<TaskStatus> statuses = Collections.singletonList(taskStatusRepository.findById(1L).orElseThrow(Exception::new));
+        task.setStatuses(statuses);
         taskRepository.save(task);
         return "redirect:/client";
     }
@@ -120,12 +122,12 @@ public class ClientController {
 
     @ModelAttribute("tasks")
     private List<Task> taskList(@AuthenticationPrincipal CurrentUser currentUser) {
-        return taskRepository.findAllByClients(userRepository.findByUsername(currentUser.getUsername()));
+        return taskRepository.findAllByClients(currentUser.getUser());
     }
 
     @ModelAttribute("cars")
-    private List<Car> carList() {
-        return carRepository.findAll();
+    private List<Car> carList(@AuthenticationPrincipal CurrentUser currentUser) {
+        return carRepository.findAllByOwner(currentUser.getUser());
     }
 
     @ModelAttribute("carTypes")

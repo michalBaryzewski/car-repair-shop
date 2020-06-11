@@ -14,7 +14,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String firstName;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String lastName;
     @Column(nullable = false, unique = true, length = 60)
     @NotNull

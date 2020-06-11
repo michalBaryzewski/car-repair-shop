@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: michalbaryzewski
@@ -11,6 +12,22 @@
     <title>Create Task</title>
 </head>
 <body>
-
+<table border="1">
+    <tbody>
+    <form:form method="post" modelAttribute="task">
+        <tr>
+            <td><b>Description:</b></td><td><form:input path="description" value="${task.description}"/></td>
+        </tr>
+        <tr>
+            <td><b>Car:</b></td><td><form:select path="car" itemLabel="licensePlate" itemValue="id" items="${cars}"/></td>
+        </tr>
+        <tr>
+            <input type="submit">
+        </tr>
+    </form:form>
+    <tr>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

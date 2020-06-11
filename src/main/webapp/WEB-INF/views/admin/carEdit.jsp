@@ -35,7 +35,7 @@
         <td><b>Engine:</b></td><td><form:input path="engine" value="${car.engine}"/></td>
     </tr>
     <tr>
-        <td><b>Power:</b></td><td><form:input path="power" value="${car.power}"/></td>
+        <td><b>Power (HP):</b></td><td><form:input path="power" value="${car.power}"/></td>
     </tr>
     <tr>
         <td><b>Type of fuel:</b></td><td><form:input path="fuelType" value="${car.fuelType}"/></td>
