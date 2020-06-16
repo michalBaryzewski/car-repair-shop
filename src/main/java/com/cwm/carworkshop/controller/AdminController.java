@@ -5,6 +5,7 @@ import com.cwm.carworkshop.repository.*;
 import com.cwm.carworkshop.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Controller
+@Secured("ROLE_ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
 
