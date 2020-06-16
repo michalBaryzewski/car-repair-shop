@@ -109,7 +109,6 @@ public class ClientController {
         return "redirect:/client";
     }
 
-
     @GetMapping("/tasks")
     public String tasks() {
         return "client/taskList";
@@ -154,6 +153,5 @@ public class ClientController {
     private List<String> gearboxTypes() {
         return Arrays.asList("manual", "automatic");
     }
-
 
 }
